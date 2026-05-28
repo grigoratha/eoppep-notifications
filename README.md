@@ -6,6 +6,36 @@ This implementation probes OPSYD.gr for announcements, archives them generating 
 and triggers e-mail notifications to an e-mail list if new announcements are discovered
 
 # CD/CI
+
 This project is designed to run both locally and in CI (GitHub Actions). 
 Is is a lightweight backend automation runner that executes periodic notification tasks without requiring a dedicated server.
 It can be used to automate notifications, email processing, or other scheduled tasks defined in the application logic.
+
+# Requirements
+
+* Windows
+* Python 3.10+
+
+---
+
+# Installation
+
+## Clone repository
+
+```bash
+git clone <repository_url>
+cd disk-monitor
+```
+
+## Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+# License
+
+MIT License
+
