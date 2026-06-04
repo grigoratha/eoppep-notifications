@@ -1,4 +1,6 @@
-# OPSYD Notifications
+# EOPPEP Notifications
+
+Lightweight service to fetch the latest announcements from EOPPEP and notify the specified mailing list
 
 Python-based automation service that runs scheduled tasks via GitHub Actions
 designed to process data and send e-mail notifications based on the logic defined in the application.
@@ -28,7 +30,7 @@ It can be used to automate notifications, email processing, or other scheduled t
 
 ```bash
 git clone <repository_url>
-cd disk-monitor
+cd EOPPEP
 ```
 
 ## Install dependencies

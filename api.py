@@ -1,30 +1,43 @@
 import requests
 
-from logger import *
+from config import URL
+from logger import logger
+from urllib.parse import urljoin
+from bs4 import BeautifulSoup
 
-def fetch_announcements(url):
+def fetch_announcements():
+    logger.info("Fetching announcements from {}", URL)
 
     try:
-        logger.info(f"Probing endpoint: {url}")
-
-        response = requests.get(url, timeout=10)
+        response = requests.get(
+            URL,
+            headers={"User-Agent": "Mozilla/5.0"},
+            timeout=30,
+        )
         response.raise_for_status()
 
-        logger.success("Announcements fetched successfully")
-        return response.json()
-
-    except requests.exceptions.Timeout:
-        logger.exception(f"Request timeout probing endpoint: {url}")
-        return []
-
-    except requests.exceptions.HTTPError as e:
-        logger.exception(f"HTTP error while probing endpoint {url}: {e.response.status_code}")
-        return []
-
     except requests.exceptions.RequestException as e:
-        logger.exception(f"Request failed probing endpoint {url}: {e}")
+        logger.exception("Failed to fetch announcements: {}", e)
         return []
 
-    except ValueError as e:
-        logger.exception(f"Invalid JSON response probing endpoint {url}: {e}")
-        return []
+    soup = BeautifulSoup(response.text, "html.parser")
+
+    announcements = []
+
+    for item in soup.select("#tm-main .el-item"):
+        title_link = item.select_one(".el-title a")
+
+        if not title_link:
+            continue
+
+        title = title_link.get_text(strip=True)
+        href = urljoin(URL, title_link.get("href"))
+
+        announcements.append({
+            "title": title,
+            "url": href,
+        })
+
+    logger.info("Fetched {} announcements", len(announcements))
+
+    return announcements

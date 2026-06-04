@@ -14,5 +14,4 @@ TO_EMAILS = os.getenv("TO_EMAILS", "").split(",")
 
 ARCHIVE_FILE = "archive.json"
 
-OPSYD_API_URL = "https://opsyd.sch.gr/api/"
-OPSYD_API_POSTS_URI = "https://opsyd.sch.gr/api/General/getTopFiveAnnouncements"
+URL = "https://eoppep.gr/index.php/el/pistopoiiseis-eksetaseis/apofoitoi-saek/anakoinoseis-exetaseon-pistopoiisis-saek"
