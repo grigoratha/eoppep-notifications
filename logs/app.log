@@ -9,3 +9,13 @@
 2026-05-27 12:52:38.099 | SUCCESS  | api:fetch_announcements:13 - Announcements fetched successfully
 2026-05-27 12:52:38.100 | INFO     | archive:load_archive:12 - Accessing archive file: archive.json
 2026-05-27 12:52:38.106 | INFO     | __main__:main:40 - No new announcements found
+2026-06-04 12:55:24.029 | INFO     | __main__:main:9 - Fetching announcements...
+2026-06-04 12:55:24.029 | INFO     | api:fetch_announcements:9 - Fetching announcements from https://eoppep.gr/index.php/el/pistopoiiseis-eksetaseis/apofoitoi-saek/anakoinoseis-exetaseon-pistopoiisis-saek
+2026-06-04 12:55:24.932 | INFO     | api:fetch_announcements:41 - Fetched 6 announcements
+2026-06-04 12:55:24.933 | INFO     | archive:load_archive:12 - Accessing archive file: archive.json
+2026-06-04 12:55:27.704 | INFO     | __main__:main:35 - Found 6 new announcements, e-mail was sent
+2026-06-04 13:03:48.810 | INFO     | __main__:main:9 - Fetching announcements...
+2026-06-04 13:03:48.810 | INFO     | api:fetch_announcements:9 - Fetching announcements from https://eoppep.gr/index.php/el/pistopoiiseis-eksetaseis/apofoitoi-saek/anakoinoseis-exetaseon-pistopoiisis-saek
+2026-06-04 13:03:49.700 | INFO     | api:fetch_announcements:41 - Fetched 6 announcements
+2026-06-04 13:03:49.702 | INFO     | archive:load_archive:12 - Accessing archive file: archive.json
+2026-06-04 13:03:49.706 | INFO     | __main__:main:38 - No new announcements found
