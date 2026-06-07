@@ -35,3 +35,23 @@ jobs:
           SMTP_PORT: ${{ secrets.SMTP_PORT }}
           TO_EMAILS: ${{ secrets.TO_EMAILS }}
         run: python app.py
+
+     - name: Commit updated archive
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Ensure we're on latest remote state BEFORE making changes
+          git fetch origin main
+          git reset --hard origin/main
+
+          # Run add AFTER reset + after Python changes exist
+          git add archive.json
+
+          if git diff --cached --quiet; then
+            echo "No changes"
+            exit 0
+          fi
+
+          git commit -m "Update archive.json [skip ci]"
+          git push origin HEAD:main
