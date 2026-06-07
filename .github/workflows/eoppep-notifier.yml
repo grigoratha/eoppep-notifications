@@ -44,6 +44,11 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+          # Always sync with latest remote first
+          git fetch origin main
+          git reset --hard origin/main
+
+          # Re-run staging AFTER reset (your script already modified file earlier)
           git add archive.json
 
           if git diff --cached --quiet; then
