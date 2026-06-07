@@ -2,8 +2,11 @@ name: EOPPEP Notifier
 
 on:
   schedule:
-    - cron: "0 7 * * *"  # runs daily at 07:00 UTC
+    - cron: "0 7 * * *"
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   run:
@@ -36,16 +39,11 @@ jobs:
           TO_EMAILS: ${{ secrets.TO_EMAILS }}
         run: python app.py
 
-     - name: Commit updated archive
+      - name: Commit updated archive
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # Ensure we're on latest remote state BEFORE making changes
-          git fetch origin main
-          git reset --hard origin/main
-
-          # Run add AFTER reset + after Python changes exist
           git add archive.json
 
           if git diff --cached --quiet; then
@@ -54,4 +52,4 @@ jobs:
           fi
 
           git commit -m "Update archive.json [skip ci]"
-          git push origin HEAD:main
+          git push origin main
